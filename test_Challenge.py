@@ -7,11 +7,11 @@ class TestChallenge(unittest.TestCase):
     def setUp(self):
         self.test1 = 'ugc auc     uag'
         self.test2 = 'ugc auc uac'
-        self.UnexpecedEnd = Res('UnexpectedEnd', True)
+        self.UnexpecedEnd = Res('UnexpectedEnd', error=True)
         self.test3 = 'ugc juc uag'
-        self.InvalidChar = Res('InvalidChar', True, error_atr = [1, 4])
+        self.InvalidChar = Res('InvalidChar', error=True, error_atr = [0, 4])
         self.test4 = 'ugc auc ua'
-        self.InvalidLength = Res('InvalidLength', True)
+        self.InvalidLength = Res('InvalidLength', error=True)
         self.test5 = '''ugcaucuag aaa uca 
         uga'''
         self.test6 = '''ugc auc 

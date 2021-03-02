@@ -104,13 +104,10 @@ def Read_String(string):
     The last group of elements is sended even there is no 3 elements.
     '''
 
-    l = 1
-    counter = 0
     cod = ''
 
-    for line in string.splitlines():
-        pos = 0
-        for el in line:
+    for l, line in enumerate(string.splitlines()):
+        for pos, el in enumerate(line):
             #Check if there is a whitespace. If yes ignore it and go to next character
             if re.match(r'\s', el):
                 pos += 1
@@ -120,19 +117,14 @@ def Read_String(string):
                 break
             #Check if the is a A,U,C,G character. If yes add it to the cod string until its length is 3
             elif re.match('[AUCG]', el.upper()):
-                pos += 1
                 cod = cod + el.upper()
-                counter += 1
-                if(counter == 3):
+                if(len(cod) == 3):
                     Codon = Res('Codon', cod)
-                    yield Codon
                     cod = ''
-                    counter = 0
-    
+                    yield Codon
             else:
                 Error = Res('InvalidChar', error = True, error_atr = [l, pos])
                 yield Error
-        l += 1
 
     #If the last codon has 1 or 2 character, then the string has an invalid length
     if(cod != ''):

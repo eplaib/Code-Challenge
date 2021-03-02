@@ -24,6 +24,24 @@ We can pass a single file or a string as input. If we run:
 python Challenge.py data\'refMrna.fa.txt'
 ```
 
-Then the program prints a list of genes or an error.
+Then the program returns a list of genes or an error.
+
+In Challenge.py, the function processes the input data as a stream. If we run:
+
+```
+python Challenge2.py data\'refMrna.fa.txt'
+```
+
+Then the program returns gene by gene and prints an error message if any.
+
+Unit test can be run with:
+
+```
+python -m unittest test_Challenge.py
+```
+
+```
+python -m unittest test_Challenge2.py
+```
 
 
